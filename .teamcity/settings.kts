@@ -44,7 +44,7 @@ object Build : BuildType({
         script {
             name = "say hi"
             id = "say_hi"
-            scriptContent = """echo "hello there!""""
+            scriptContent = """./buildme"""
             dockerImage = "ubuntu:jammy"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }

@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+
+echo "hi there from the main repo"
