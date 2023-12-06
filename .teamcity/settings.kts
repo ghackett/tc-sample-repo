@@ -31,10 +31,43 @@ version = "2023.11"
 project {
 
     buildType(Build)
+    buildType(Build2)
 }
 
 object Build : BuildType({
     name = "Build"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    steps {
+        script {
+            name = "say hi"
+            id = "say_hi"
+            scriptContent = """./buildme"""
+            dockerImage = "ubuntu:jammy"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+
+    requirements {
+        matches("teamcity.agent.jvm.os.family", "Linux")
+    }
+})
+
+object Build2 : BuildType({
+    name = "Build2"
 
     vcs {
         root(DslContext.settingsRoot)
